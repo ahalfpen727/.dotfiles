@@ -80,9 +80,11 @@ sudo apt-get install oracle-java11-installer-local openjdk-11-jre
 sudo update-alternatives --config java
 
 #verify installation check the java configuration 
-
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 echo $JAVA_HOME
+export PATH=$PATH:$JAVA_HOME/bin
+
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 # Docker
