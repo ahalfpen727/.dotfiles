@@ -39,25 +39,27 @@ alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazona
 # aliases for analyses and development
 #####################################################################
 
-alias emacs='emacs -nw'
-# open emacs terminal (not emacs gui)
-alias sudoemacs='sudo emacs -nw'
-alias sudomysql='sudo mysql -u root -p'
-alias remount="sudo mount -o remount,rw"
-export PICARD="/home/drew/toolbin/picard.jar"
-alias picard="java -jar $PICARD"
-export GATK="/home/drew/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
-alias gatk="java -jar $GATK"
 export BCFTOOLS_PLUGINS="/home/drew/toolbin/bcftools/plugins/"
 export iaap="/home/drew/toolbin/iaap-cli/iaap"
 export iaap_gencall="/home/drew/toolbin/iaap-cli/iaap gencall"
 export EAGLE="/home/drew/toolbin/eagle_v2.4.1"
+export PICARD="/home/drew/toolbin/picard/build/libs/picard-2.24.1-2-g4a9c42d-SNAPSHOT-all.jar"
+export GATK="/home/drew/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
+
+# bioinformatics aliases
+alias picard="java -jar $PICARD"
+alias gatk="java -jar $GATK"
 alias eagle="bash $EAGLE"
 alias igv="bash /home/drew/toolbin/IGV_2.8.12/igv.sh"
 alias igvtools="bash /home/drew/toolbin/IGV_2.8.12/igvtools"
 alias bamseek="java -jar BAMseek2011July24.jar"
 # nextflow
-#alias nextflow="nextflow.sh"
+alias nextflow="/home/drew/.dotfiles/nextflow.sh"
+# open emacs terminal (not emacs gui)
+alias emacs='emacs -nw'
+alias sudoemacs='sudo emacs -nw'
+alias sudomysql='sudo mysql -u root -p'
+alias remount="sudo mount -o remount,rw"
 
 #####################################################################
 # aliases for maneuvering around the directory heirarchy
