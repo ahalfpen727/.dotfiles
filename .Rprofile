@@ -6,14 +6,9 @@
 
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
-<<<<<<< HEAD
 options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
                     BioCann="https://bioconductor.org/packages/3.10/data/annotation",
                     BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
-=======
-
-options("repos" = c(BioCsoft="http://www.bioconductor.org/packages/3.11/bioc",
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
                     Rforge="http://r-forge.r-project.org",
                     CRAN = "https://mirrors.ustc.edu.cn/CRAN/"))
 #    CRAN = "http://cran.rstudio.com/"))
