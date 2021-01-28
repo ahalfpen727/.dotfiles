@@ -7,16 +7,10 @@ case $- in
     *i*) ;;
       *) return;;
 esac
-<<<<<<< HEAD
 
 ############################################################
 # Sudo Commands
 #############################################################
-=======
-######################
-# Sudo Commands                                                                #######################
-alias su="sudo -i"
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 # list installed packages
 alias pkgs='sudo apt list --installed'
 alias install='sudo apt-get install'
@@ -25,12 +19,12 @@ alias purge='sudo apt-get remove --purge'
 alias update='sudo apt-get update'
 alias clean='sudo apt-get autoclean && sudo apt-get autoremove'
 alias sources='(gksudo geany /etc/apt/sources.list &)'
-<<<<<<< HEAD
 alias su="sudo -i"
 
 #############################################################
 # Python aliases
 #############################################################
+alias python='python3.7'
 alias pip='pip3'
 alias pyve='python3 -m venv ./venv'
 alias pyva='source ./venv/bin/activate'
@@ -50,47 +44,24 @@ alias emacs='emacs -nw'
 alias sudoemacs='sudo emacs -nw'
 alias sudomysql='sudo mysql -u root -p'
 alias remount="sudo mount -o remount,rw"
-=======
-#######################                                                        # Python aliases                                                               #######################
-alias pip='pip3'
-alias pyve='python3 -m venv ./venv'
-alias pyva='source ./venv/bin/activate'
-##############################################                                 # shorten ssh command to the ghpcc cluster
-##############################################
-alias sshghpcc='ssh aj26b@ghpcc06.umassrc.org; conda deactivate'
-alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazonaws.com'
-#######################                                                        # open emacs terminal (not emacs gui)
-#######################
-alias emacs='emacs -nw'
-alias sudoemacs='sudo emacs -nw'
-alias sudomysql='sudo mysql -u root -p'
-alias remount="sudo mount -o remount,rw"
-# one word to use python 3 to pip install
-alias pip='pip3 install'
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 export PICARD="/home/drew/toolbin/picard.jar"
 alias picard="java -jar $PICARD"
 export GATK="/home/drew/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
 alias gatk="java -jar $GATK"
 export BCFTOOLS_PLUGINS="/home/drew/toolbin/bcftools/plugins/"
+export iaap="/home/drew/toolbin/iaap-cli/iaap"
+export iaap_gencall="/home/drew/toolbin/iaap-cli/iaap gencall"
 export EAGLE="/home/drew/toolbin/eagle_v2.4.1"
 alias eagle="bash $EAGLE"
 alias igv="bash /home/drew/toolbin/IGV_2.8.12/igv.sh"
 alias igvtools="bash /home/drew/toolbin/IGV_2.8.12/igvtools"
 alias bamseek="java -jar BAMseek2011July24.jar"
-<<<<<<< HEAD
 # nextflow
 #alias nextflow="nextflow.sh"
 
 #####################################################################
 # aliases for maneuvering around the directory heirarchy
 #####################################################################
-=======
-# conda and nextflow
-alias nextflow="nextflow.sh"
-alias activate='conda activate'
-alias deactivate='conda deactivate'
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 # ls aliases
 alias ls='ls -altghr --color=auto -hF --group-directories-first'
 alias lss='ls ../ -altghr --color=auto -hF --group-directories-first'
@@ -112,16 +83,12 @@ alias pushorigin="git push -u origin master"
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export LS_COLORS="di=1;34;40:ln=1;36;40:so=1;35;40:pi=1;93;40:ex=1;31;40:bd=1;34;46:cd=1;34;43:su=0;41:sg=0;46:tw=0;47:ow=0;43"
-<<<<<<< HEAD
 
 #########################################################                                                            
-=======
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 # http://norbauer.com/notebooks/code/notes/ls-colors-and-terminal-app
 # used BSD pattern ExGxFxDxBxEgEdxbxgxhxd on http://geoff.greer.fm/lscolors/
 # I specified the colors by looking manually at After switching to RStudio:
 # https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
-<<<<<<< HEAD
 #########################################################                                                            
 #alias repos='sudo egrep -h -v -E "(^#)|(^$)" /etc/apt/sources.list $(ls /etc/apt/sources.list.d/*.list 2> /dev/null)'
 
@@ -136,30 +103,15 @@ alias deactivate='conda deactivate'
 # safety features
 ###################
 
-=======
-
-###################                                                            # Conda commands
-alias repos='sudo egrep -h -v -E "(^#)|(^$)" /etc/apt/sources.list $(ls /etc/apt/sources.list.d/*.list 2> /dev/null)'
-###################                                                            # Conda commands
-###################                                                                                
-alias activate='conda activate'
-alias deactivate='conda deactivate'
-
-###################                                                            # safety features                                                              ###################                                                                                
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 alias ln='ln -i'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserv'
 
-<<<<<<< HEAD
 #######################
 # cd aliases
 #######################                                                                            
 
-=======
-#######################                                                        # cd aliases                                                                   #######################                                                                            
->>>>>>> 2592f7baf47b41d6d14bc77df82baaf692be2d05
 alias less='less -r'
 alias where='type -a'
 alias vi='vim'
