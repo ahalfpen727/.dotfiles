@@ -132,6 +132,8 @@ docker run --rm -p 8787:8787 -v /home/drew/umb_triley: rocker/verse
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 # git
+
+
 Initialize a new repository
 ```
 git init
@@ -139,14 +141,33 @@ git add .
 git commit -m "new shit"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
-
 ```
+
+… push a new repository to the remote repository
+```
+echo "# Tailor-Secondary-Analysis" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
+git push -u origin main
+```
+
+…or push an existing repository from the command line
+```
+git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
+git branch -M main
+git push -u origin main
+```
+
 push a new commit from a new computer to an old repository
 ```
 git remote add origin git@github.com:ahalfpen727/old-repo.git
 git pull origin master --allow-unrelated-histories
 git push -u origin master
 ```
+
 merging two repositories
 ```
 cd path/to/B
