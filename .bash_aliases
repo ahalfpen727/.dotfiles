@@ -24,7 +24,7 @@ alias su="sudo -i"
 #############################################################
 # Python aliases
 #############################################################
-alias python='python3.7'
+alias python='python3.6'
 alias pip='pip3'
 alias pyve='python3 -m venv ./venv'
 alias pyva='source ./venv/bin/activate'
@@ -53,8 +53,15 @@ alias eagle="bash $EAGLE"
 alias igv="bash /home/drew/toolbin/IGV_2.8.12/igv.sh"
 alias igvtools="bash /home/drew/toolbin/IGV_2.8.12/igvtools"
 alias bamseek="java -jar BAMseek2011July24.jar"
+alias plink="/home/drew/toolbin/plink"
+alias beagle="java -jar /home/drew/toolbin/beagle.jar"
+alias bref3="java -jar /home/drew/toolbin/bref3.jar"
+alias impute5="/home/drew/toolbin/impute5"
+alias imp5Converter="/home/drew/toolbin/imp5Comverter"
+
 # nextflow
 alias nextflow="/home/drew/.dotfiles/nextflow.sh"
+
 # open emacs terminal (not emacs gui)
 alias emacs='emacs -nw'
 alias sudoemacs='sudo emacs -nw'
