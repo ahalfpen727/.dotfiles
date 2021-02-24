@@ -39,28 +39,31 @@ alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazona
 # aliases for analyses and development
 #####################################################################
 
-export BCFTOOLS_PLUGINS="/home/drew/toolbin/bcftools/plugins/"
-export iaap="/home/drew/toolbin/iaap-cli/iaap"
-export iaap_gencall="/home/drew/toolbin/iaap-cli/iaap gencall"
-export EAGLE="/home/drew/toolbin/eagle_v2.4.1"
-export PICARD="/home/drew/toolbin/picard/build/libs/picard-2.24.1-2-g4a9c42d-SNAPSHOT-all.jar"
-export GATK="/home/drew/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
+# bioinformatics directories
+export BCFTOOLS_PLUGINS="$HOME/toolbin/bcftools/plugins/"
+export iaap="$HOME/toolbin/iaap-cli/iaap"
+export iaap_gencall="$HOME/toolbin/iaap-cli/iaap gencall"
+export EAGLE="$HOME/toolbin/eagle_v2.4.1"
+export PICARD="$HOME/toolbin/picard/build/libs/picard-2.24.1-2-g4a9c42d-SNAPSHOT-all.jar"
+export GATK="$HOME/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
+export SNPEFF="$HOME/toolbin/snpEff/snpEff.jar"
 
 # bioinformatics aliases
+alias snpeff="java -jar $SNPEFF"
 alias picard="java -jar $PICARD"
 alias gatk="java -jar $GATK"
 alias eagle="bash $EAGLE"
-alias igv="bash /home/drew/toolbin/IGV_2.8.12/igv.sh"
-alias igvtools="bash /home/drew/toolbin/IGV_2.8.12/igvtools"
+alias igv="bash $HOME/toolbin/IGV_2.8.12/igv.sh"
+alias igvtools="bash $HOME/toolbin/IGV_2.8.12/igvtools"
 alias bamseek="java -jar BAMseek2011July24.jar"
-alias plink="/home/drew/toolbin/plink"
-alias beagle="java -jar /home/drew/toolbin/beagle.jar"
-alias bref3="java -jar /home/drew/toolbin/bref3.jar"
-alias impute5="/home/drew/toolbin/impute5"
-alias imp5Converter="/home/drew/toolbin/imp5Comverter"
+alias plink="$HOME/toolbin/plink"
+alias beagle="java -jar $HOME/toolbin/beagle.jar"
+alias bref3="java -jar $HOME/toolbin/bref3.jar"
+alias impute5="$HOME/toolbin/impute5"
+alias imp5Converter="$HOME/toolbin/imp5Comverter"
 
 # nextflow
-alias nextflow="/home/drew/.dotfiles/nextflow.sh"
+alias nextflow="$HOME/.dotfiles/nextflow.sh"
 
 # open emacs terminal (not emacs gui)
 alias emacs='emacs -nw'
