@@ -16,6 +16,16 @@ fi
 if [ -e $HOME/.bash_aliases ]; then
     source $HOME/.bash_aliases
 fi
+
+# Add toolbin directories to PATH permanatly
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+export BCFTOOLS_PLUGINS=$HOME/toolbin/bcftools/plugins
+export PATH=$PATH:$HOME/toolbin/bcftools:$JAVA_HOME:$BCFTOOLS_PLUGINS
+export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/samtools:$HOME/toolbin/htslib
+export PATH=$PATH:$HOME/toolbin/picard:$HOME/toolbin/gatk:$HOME/toolbin/iaap-cli
+export PATH=$PATH:$HOME/toolbin/boost_1_66_0:$HOME/toolbin/rtg-tools
+
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -317,12 +327,10 @@ __conda_setup="$('/home/drew/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/n
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/drew/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/drew/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/drew/miniconda3/bin:$PATH"
-    fi
+    [ -f "/home/drew/miniconda3/etc/profile.d/conda.sh" ]
 fi
+
+    
 unset __conda_setup
 conda deactivate
 # Ruby variables

@@ -73,11 +73,18 @@ ssh-copy-id -i .ssh/id_rsa.pub aj26b@ghpcc06.umassrc.org
 # Java
 Many programs like Cytoscape rely on java version 8 which can be installed using the following commands
 ```
-#sudo add-apt-repository ppa:webupd8team/java
-#sudo apt-get install oracle-java8-installer openjdk-8-jdk
+# add the PPA for oracle's version 8 of java
+sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update 
-sudo apt-get install oracle-java11-installer-local openjdk-11-jre
+sudo apt-get install oracle-java8-installer openjdk-8-jdk openjdk-8-jre 
 sudo update-alternatives --config java
+
+# add the PPA for oracle's version 11 of java
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt-get update 
+sudo apt-get install oracle-java11-installer openjdk-11-jdk openjdk-11-jre
+sudo update-alternatives --config java
+
 
 #verify installation check the java configuration 
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
