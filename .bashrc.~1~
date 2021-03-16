@@ -21,7 +21,10 @@ fi
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 export BCFTOOLS_PLUGINS=$HOME/toolbin/bcftools/plugins
-export PATH=$PATH:$HOME/toolbin/bcftools:$JAVA_HOME:$BCFTOOLS_PLUGINS:$HOME/toolbin:$HOME/toolbin/samtools:$HOME/toolbin/htslib:$HOME/toolbin/picard:$HOME/toolbin/gatk:$HOME/toolbin/iaap-cli:$HOME/toolbin/boost_1_66_0:$HOME/toolbin/rtg-tools
+export PATH=$PATH:$HOME/toolbin/bcftools:$JAVA_HOME:$BCFTOOLS_PLUGINS
+export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/samtools:$HOME/toolbin/htslib
+export PATH=$PATH:$HOME/toolbin/picard:$HOME/toolbin/gatk:$HOME/toolbin/iaap-cli
+export PATH=$PATH:$HOME/toolbin/boost_1_66_0:$HOME/toolbin/rtg-tools
 
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
