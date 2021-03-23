@@ -137,17 +137,6 @@ link hard-drive to container
 ```
 docker run --rm -p 8787:8787 -v /home/drew/umb_triley: rocker/verse
 ```
-# How to resolve error after new docker installation
-# cannot connect to the Docker daemon at unix:///var/run/docker.sock. 
-# Solution
-```
-$ systemctl daemon-reload
-$ sudo service docker restart
-$ sudo service docker status (should see active (running))
-$ sudo docker run hello-world
-
-```
-
 -------------------------------------------------------------------------------------------------------------------------------
 # git
 
