@@ -319,6 +319,13 @@ function job_color()
     fi
 }
 
+# Ruby variables
+export GEM_HOME="$HOME/gems"
+if [ -f "/home/drew/.gem/ruby/2.7.0/" ]; then
+    export PATH_TO_RUBY="/home/drew/.gem/ruby/2.7.0/bin"
+    PATH=$PATH:"/home/drew/.gem/ruby/2.7.0/":"/home/drew/.gem/ruby/2.7.0/bin":"/home/drew/.gem/ruby/2.7.0/gems":"~/.gem/ruby/2.7.0/gems/gemsbundler-2.1.4"       
+fi
+
 # >>> conda initialize >>>
 __conda_setup="$('/home/drew/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -326,13 +333,23 @@ if [ $? -eq 0 ]; then
 else
     [ -f "/home/drew/miniconda3/etc/profile.d/conda.sh" ]
 fi
-
     
 unset __conda_setup
 conda deactivate
-# Ruby variables
-export GEM_HOME="$HOME/gems"
-if [ -f "/home/drew/.gem/ruby/2.7.0/" ]; then
-    export PATH_TO_RUBY="/home/drew/.gem/ruby/2.7.0/bin"
-    PATH=$PATH:"/home/drew/.gem/ruby/2.7.0/":"/home/drew/.gem/ruby/2.7.0/bin":"/home/drew/.gem/ruby/2.7.0/gems":"~/.gem/ruby/2.7.0/gems/gemsbundler-2.1.4"       
-fi
+export PATH=$HOME/toolbin:$HOME/toolbin/bcftools:$HOME/toolbin/bcftools/plugins:/home/drew/miniconda3/condabin:/home/drew/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/drew/toolbin/bcftools:/usr/lib/jvm/java-11-openjdk-amd64/:/home/drew/toolbin/bcftools/plugins:/home/drew/toolbin:/home/drew/toolbin/samtools:/home/drew/toolbin/htslib:/home/drew/toolbin/picard:/home/drew/toolbin/gatk:/home/drew/toolbin/iaap-cli:/home/drew/toolbin/boost_1_66_0:/home/drew/toolbin/rtg-tools:/home/drew/toolbin/sratoolkit:/home/drew/toolbin/edirect
+PERL5LIB=/usr/local/share/perl/5.26.1
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# AWS ENV VARS
+# add the following to ~/.aws/credentials file
+#[264499609354_AWSAdministratorAccess]
+#aws_access_key_id=ASIAT3FLHX4FD6Q2K6Q5
+#aws_secret_access_key=sgfh2lq0sHSUV4YzN0uweLZ0ZDAzUDWTOiaJeL4F
+#aws_session_token=IQoJb3JpZ2luX2VjEJn//////////wEaCXVzLWVhc3QtMSJGMEQCIBfTHZ9ye+qpguYNr1oOXZpm00/KfrGFxJXJeAMy/DLXAiB/NhnPDax4TRNz62nnsURieO6xmstJw6MxVWcBJeHcACqNAwgREAAaDDI2NDQ5OTYwOTM1NCIMr04Oq2MG7g1RKY4JKuoCeg5TaQgdI14pySwAa42QPd3V+SKnqt/L4BfA7dKK/i6DeS1yTbpLoihpCD4YwXXQhbmtu700xtkLIT35bIyE29Zn1QpSBqyh76lrIXfTbYw1S7sIPD5p5V7mB5/MvtEe4Hd2MW/Yw1ZUT2wVVbpKCSjVZcZck2zFGqkdzyJ4UVIFsMVpS6J/4mMn+44k00XiLbedX8xGEdJfheOHVcZ+9qoYa4miLbrGVzruySTjXiHEVIHxtqPpaATzvcAkk5nxxK+nX932zGZUtOvsOlo9vq8XcjFbBz0XEZZjsAHrtk0ZSplfWFubaKwfGkpSQ4mA6/ulgHRjA4aZR6OjDO2nPW5Lg/5c28cx7Zzle8FFk6+ROk9VAz8m9Np8q6vrZbzYdoiGTQuad2kfT0Put0bNwe19Co9MA3VJTM0Z2Uof+y6nbtlf5A4ftKd1PO2YZ0xQG9+dYsKZV/UzKTEF2bVNiKx7D4o5D1jvoCIwwMqUhAY6pwGNmBDy9nCQBPXP9fG0OzC6NC2OkpS5E97u9/STIOIS1pg4DgJLbw4H+IkW+OAXc5dweTC7VRdifej+mmD50galGJYG7JWqN3lG2gf5LZS+NPxijltYnQaTUfp0HUWfuOCqcmul9ZDt8ZkRAe/hnpkJfGTvA/x/ZXStWq/7el/BtjBRCARVAIUd7JVetxmEEGxZMGSGk/5jT6TAh7Kkn4tA413/3g7R+A==
+export AWS_ACCESS_KEY_ID="ASIAT3FLHX4FD6Q2K6Q5"
+export AWS_SECRET_ACCESS_KEY="sgfh2lq0sHSUV4YzN0uweLZ0ZDAzUDWTOiaJeL4F"
+export AWS_SESSION_TOKEN="IQoJb3JpZ2luX2VjEJn//////////wEaCXVzLWVhc3QtMSJGMEQCIBfTHZ9ye+qpguYNr1oOXZpm00/KfrGFxJXJeAMy/DLXAiB/NhnPDax4TRNz62nnsURieO6xmstJw6MxVWcBJeHcACqNAwgREAAaDDI2NDQ5OTYwOTM1NCIMr04Oq2MG7g1RKY4JKuoCeg5TaQgdI14pySwAa42QPd3V+SKnqt/L4BfA7dKK/i6DeS1yTbpLoihpCD4YwXXQhbmtu700xtkLIT35bIyE29Zn1QpSBqyh76lrIXfTbYw1S7sIPD5p5V7mB5/MvtEe4Hd2MW/Yw1ZUT2wVVbpKCSjVZcZck2zFGqkdzyJ4UVIFsMVpS6J/4mMn+44k00XiLbedX8xGEdJfheOHVcZ+9qoYa4miLbrGVzruySTjXiHEVIHxtqPpaATzvcAkk5nxxK+nX932zGZUtOvsOlo9vq8XcjFbBz0XEZZjsAHrtk0ZSplfWFubaKwfGkpSQ4mA6/ulgHRjA4aZR6OjDO2nPW5Lg/5c28cx7Zzle8FFk6+ROk9VAz8m9Np8q6vrZbzYdoiGTQuad2kfT0Put0bNwe19Co9MA3VJTM0Z2Uof+y6nbtlf5A4ftKd1PO2YZ0xQG9+dYsKZV/UzKTEF2bVNiKx7D4o5D1jvoCIwwMqUhAY6pwGNmBDy9nCQBPXP9fG0OzC6NC2OkpS5E97u9/STIOIS1pg4DgJLbw4H+IkW+OAXc5dweTC7VRdifej+mmD50galGJYG7JWqN3lG2gf5LZS+NPxijltYnQaTUfp0HUWfuOCqcmul9ZDt8ZkRAe/hnpkJfGTvA/x/ZXStWq/7el/BtjBRCARVAIUd7JVetxmEEGxZMGSGk/5jT6TAh7Kkn4tA413/3g7R+A=="
+
