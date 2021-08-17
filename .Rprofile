@@ -3,15 +3,23 @@
 #.libPaths("~/home/drew/R/x86_64-pc-linux-gnu-library/3.6")
 #.Library.site <- file.path(chartr("\\", "/", R.home()),
 # "/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library:~/R/x86_64-pc-linux-gnu-library/3.6")
-
+local({
+    r <- getOption("repos")
+    r["CRAN"] <- "http://lib.stat.cmu.edu/R/CRAN/"
+    r["BioCsoft"] <- "https://bioconductor.org/packages/3.10/bioc"
+    r["BioCann"] <- "https://bioconductor.org/packages/3.10/data/annotation"
+    r["BioCexp"] <- "https://bioconductor.org/packages/3.10/data/experiment"
+    r["Rforge"] <- "http://r-forge.r-project.org"
+    options(repos = r)
+})
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
 options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
                     BioCann="https://bioconductor.org/packages/3.10/data/annotation",
                     BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
                     Rforge="http://r-forge.r-project.org",
-                    CRAN = "https://mirrors.ustc.edu.cn/CRAN/"))
-#    CRAN = "http://cran.rstudio.com/"))
+                    CRAN = "http://lib.stat.cmu.edu/R/CRAN/"))
+
 "%nin%" <- function(x, y) !(x %in% y)
 ## Returns names(df) in single column, numbered matrix format.
 n <- function(df) matrix(names(df))
@@ -39,17 +47,14 @@ biocI <- function(x) {source("http://bioconductor.org/biocLite.R")
 unrowname <- function(x) {
     rownames(x) <- NULL;  x
     }
-
 ## Attach all the variables above
 attach(.env)
-
 ## .First() run at the start of every R session.
 ## Use to load commonly used packages?
 .First <- function() {
 	# library(ggplot2)
 	cat("\nSuccessfully loaded .Rprofile at", date(), "\n")
 }
-
 ## .Last() run at the end of the session
 .Last <- function() {
 	# save command history here?

@@ -73,18 +73,11 @@ ssh-copy-id -i .ssh/id_rsa.pub aj26b@ghpcc06.umassrc.org
 # Java
 Many programs like Cytoscape rely on java version 8 which can be installed using the following commands
 ```
-# add the PPA for oracle's version 8 of java
-sudo add-apt-repository ppa:webupd8team/java
+#sudo add-apt-repository ppa:webupd8team/java
+#sudo apt-get install oracle-java8-installer openjdk-8-jdk
 sudo apt-get update 
-sudo apt-get install oracle-java8-installer openjdk-8-jdk openjdk-8-jre 
+sudo apt-get install oracle-java11-installer-local openjdk-11-jre
 sudo update-alternatives --config java
-
-# add the PPA for oracle's version 11 of java
-sudo add-apt-repository ppa:linuxuprising/java
-sudo apt-get update 
-sudo apt-get install oracle-java11-installer openjdk-11-jdk openjdk-11-jre
-sudo update-alternatives --config java
-
 
 #verify installation check the java configuration 
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
@@ -137,17 +130,6 @@ link hard-drive to container
 ```
 docker run --rm -p 8787:8787 -v /home/drew/umb_triley: rocker/verse
 ```
-# How to resolve error after new docker installation
-# cannot connect to the Docker daemon at unix:///var/run/docker.sock. 
-# Solution
-```
-$ systemctl daemon-reload
-$ sudo service docker restart
-$ sudo service docker status (should see active (running))
-$ sudo docker run hello-world
-
-```
-
 -------------------------------------------------------------------------------------------------------------------------------
 # git
 
