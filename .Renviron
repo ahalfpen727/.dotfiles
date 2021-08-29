@@ -3,7 +3,7 @@
 #usethis::edit_r_environ()
 R_HOME=/usr/lib/R
 R_LIBS_SITE=/usr/lib/R/site-library
-R_LIBS_USER=/home/drew/R/x86_64-pc-linux-gnu-library/3.6
+R_LIBS_USER=/home/drew/R/x86_64-pc-linux-gnu-library/4.1
 R_INCLUDE_DIR=/usr/share/R/include
 PAGER=/usr/bin/less
 R_MAX_NUM_DLLS=200
