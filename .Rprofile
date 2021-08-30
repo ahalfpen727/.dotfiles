@@ -8,9 +8,9 @@
 .env <- new.env()
 #options(download.file.method = "libcurl")
 options(download.file.method = "wget")
-options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
-                    BioCann="https://bioconductor.org/packages/3.10/data/annotation",
-                    BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
+options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.13/bioc",
+                    BioCann="https://bioconductor.org/packages/3.13/data/annotation",
+                    BioCexp="https://bioconductor.org/packages/3.13/data/experiment",
                     Rforge="http://r-forge.r-project.org",
                     CRAN = "https://mirrors.nics.utk.edu/cran/"))
 
