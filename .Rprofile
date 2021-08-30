@@ -6,12 +6,14 @@
 
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
+#options(download.file.method = "libcurl")
+options(download.file.method = "wget")
 options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
                     BioCann="https://bioconductor.org/packages/3.10/data/annotation",
                     BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
                     Rforge="http://r-forge.r-project.org",
-                    CRAN = "https://mirrors.ustc.edu.cn/CRAN/"))
-#    CRAN = "http://cran.rstudio.com/"))
+                    CRAN = "https://mirrors.nics.utk.edu/cran/"))
+
 "%nin%" <- function(x, y) !(x %in% y)
 ## Returns names(df) in single column, numbered matrix format.
 n <- function(df) matrix(names(df))
