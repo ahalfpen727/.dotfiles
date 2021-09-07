@@ -44,15 +44,15 @@ export BCFTOOLS_PLUGINS="$HOME/toolbin/bcftools/plugins/"
 export iaap="$HOME/toolbin/iaap-cli/iaap"
 export iaap_gencall="$HOME/toolbin/iaap-cli/iaap gencall"
 export EAGLE="$HOME/toolbin/eagle_v2.4.1"
-export PICARD="$HOME/toolbin/picard/build/libs/picard-2.24.1-2-g4a9c42d-SNAPSHOT-all.jar"
-export GATK="$HOME/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
+export PICARD="$HOME/toolbin/picard/build/libs/picard.jar"
+export GATK="$HOME/toolbin/gatk-4.1.6.0/gatk-package-4.1.6.0-local.jar"
 export SNPEFF="$HOME/toolbin/snpEff/snpEff.jar"
 
 # bioinformatics aliases
-alias snpeff="java -jar $SNPEFF"
 alias picard="java -jar $PICARD"
 alias gatk="java -jar $GATK"
 alias eagle="bash $EAGLE"
+alias snpeff="java -jar $SNPEFF"
 alias igv="bash $HOME/toolbin/IGV_Linux_2.9.1/igv.sh"
 alias igvtools="bash $HOME/toolbin/IGV_2.8.12/igvtools"
 alias bamseek="java -jar BAMseek2011July24.jar"
@@ -106,14 +106,14 @@ export LS_COLORS="di=1;34;40:ln=1;36;40:so=1;35;40:pi=1;93;40:ex=1;31;40:bd=1;34
 
 #########################################################
 # Conda commands
-###################                                                                                
+#########################################################                                                                                
 
 alias activate='conda activate'
 alias deactivate='conda deactivate'
 
-###################
+#########################################################
 # safety features
-###################
+#########################################################
 
 alias ln='ln -i'
 alias chown='chown --preserve-root'
