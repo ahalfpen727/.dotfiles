@@ -4,13 +4,11 @@ Unless otherwise stated, all material is licensed under a Creative Commons Attri
 -------------------------------------------------------------------------------------------------------------------------------
 Here is some code to help reinstall everything after nuking an OS, which I have done frequently enough to warrant automation of the task. These files and commands configure bash, emacs, R, conda, java, docker, ssh, jupyter-notebook, and git.
 
-# R libraries for linux are distro and version specific.
+-------------------------------------------------------------------------------------------------------------------------------
+# R-version 3.4
+libraries for linux are distro and version specific
 In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
 ```
-# ubuntu 16.04
-deb http://ppa.launchpad.net/marutter/c2d4u/ubuntu xenial main 
-deb-src http://ppa.launchpad.net/marutter/c2d4u/ubuntu xenial main 
-
 # ubuntu 18.04
 deb http://ppa.launchpad.net/marutter/c2d4u/ubuntu bionic main 
 deb-src http://ppa.launchpad.net/marutter/c2d4u/ubuntu bionic main
@@ -22,9 +20,9 @@ deb http://<favourite-cran-mirror>/bin/linux/debian stretch-cran35/
 sudo apt-key adv --keyserver subkeys.pgp.net --recv-key 381BA480
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
-
-# Afterwards, execute the following command:
-
+```
+Afterwards, execute the following command:
+```
 sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
 
 # In order to install R-version 3.5.* or update R-3.4.* to R-3.5
@@ -33,14 +31,15 @@ sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
 ```
 
 # R-version 3.5
+In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
 ```
-deb http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu YOUR_UBUNTU_VERSION_HERE main 
-deb-src http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu YOUR_UBUNTU_VERSION_HERE main 
-deb http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu YOUR_UBUNTU_VERSION_HERE main 
-deb-src http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu YOUR_UBUNTU_VERSION_HERE main 
-
-# Afterwards, execute the following command:
-
+deb http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main 
+deb http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main 
+deb-src http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main 
+```
+Afterwards, execute the following command:
+```
 sudo add-apt-repository ppa:marutter/c2d4u3.5 && sudo apt update
 ```
 -------------------------------------------------------------------------------------------------------------------------------
@@ -133,7 +132,6 @@ docker run --rm -p 8787:8787 -v /home/drew/umb_triley: rocker/verse
 -------------------------------------------------------------------------------------------------------------------------------
 # git
 
-
 Initialize a new repository
 ```
 git init
@@ -142,7 +140,6 @@ git commit -m "new shit"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
-
 … push a new repository to the remote repository
 ```
 echo "# Tailor-Secondary-Analysis" >> README.md
@@ -153,21 +150,18 @@ git branch -M main
 git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
 git push -u origin main
 ```
-
 …or push an existing repository from the command line
 ```
 git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
 git branch -M main
 git push -u origin main
 ```
-
 push a new commit from a new computer to an old repository
 ```
 git remote add origin git@github.com:ahalfpen727/old-repo.git
 git pull origin master --allow-unrelated-histories
 git push -u origin master
 ```
-
 merging two repositories
 ```
 cd path/to/B
@@ -185,6 +179,16 @@ git pull origin master
 git merge master-holder --allow-unrelated-histories
 git push origin master
 ```
+Modifying default method for communicating with remote repositories
+  Modify from https to ssh
+```
+git remote set-url origin git@github.com:USERNAME/REPOSITORY.git.
+```
+  Modify from ssh to https
+```
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+```
+
 -------------------------------------------------------------------------------------------------------------------------------
 # conda
 configuration for bioconda and other necessary channels
