@@ -1,10 +1,8 @@
 # System (Re)Configuration Documentation
 -------------------------------------------------------------------------------------------------------------------------------
-Unless otherwise stated, all material is licensed under a Creative Commons Attribution-ShareAlike 3.0 License. You may copy, distribute, transmit, and adapt the work as long as you do so under the same license and CITE ITS ORIGIN
--------------------------------------------------------------------------------------------------------------------------------
 Here is some code to help reinstall everything after nuking an OS, which I have done frequently enough to warrant automation of the task. These files and commands configure bash, emacs, R, conda, java, docker, ssh, jupyter-notebook, and git.
-
 -------------------------------------------------------------------------------------------------------------------------------
+
 # R-version 3.4
 libraries for linux are distro and version specific
 In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
