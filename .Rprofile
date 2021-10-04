@@ -23,7 +23,7 @@ h <- function(x) utils::head()
 ## ht==headtail, i.e., show the first and last 10 items of an object
 ht <- function(d) rbind(head(d,10),tail(d,10))
 ## Show the first 5 rows and first 5 columns of a data frame or matrix
-hh <- function(d) if(class(d)=="matrix"|class(d)=="data.frame") d[1:5,1:5]
+hd <- function(d) if(class(d)=="matrix"|class(d)=="data.frame") d[1:5,1:5]
 # simplify the install command
 install <- function(x) {
     if (!requireNamespace(x))
