@@ -4,12 +4,6 @@ case $- in
     *i*) ;;
       *) return;;
 esac
-# Source global definitions (if any)
-if [ -f ./.bashrc ]; then
-    . /.bashrc   # --> Read /etc/bashrc, if present.
-else
-    . /etc/bashrc
-fi
 
 # envrc variables
 if [ -f ~/.envrc ]; then
