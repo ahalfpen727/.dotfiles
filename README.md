@@ -67,6 +67,14 @@ ssh-keygen -t rsa
 ssh-copy-id -i .ssh/id_rsa.pub aj26b@ghpcc06.umassrc.org
 ```
 -------------------------------------------------------------------------------------------------------------------------------
+# AWS rsync
+
+```
+sudo rsync -av --progress -e "ssh -i .ssh/LightsailDefaultKey-us-east-1.pem" /media/andrew/wd2TBnas/2020SplicingData/Broad-Pipeline-Recapitulation/ ubuntu@54.156.50.149:~/2020splicing
+```
+
+-------------------------------------------------------------------------------------------------------------------------------
+
 # Java
 Many programs like Cytoscape rely on java version 8 which can be installed using the following commands
 ```
