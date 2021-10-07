@@ -5,17 +5,25 @@ case $- in
       *) return;;
 esac
 # Source global definitions (if any)
-if [ -f /etc/bashrc ]; then
-      . /etc/bashrc   # --> Read /etc/bashrc, if present.
+if [ -f ./.bashrc ]; then
+    . /.bashrc   # --> Read /etc/bashrc, if present.
+else
+    . /etc/bashrc
 fi
+
 # envrc variables
 if [ -f ~/.envrc ]; then
    source ~/.envrc
 fi
+
 # Alias definitions.
 if [ -e $HOME/.bash_aliases ]; then
     source $HOME/.bash_aliases
 fi
+
+# Path modifications
+export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/bcftools:$HOME/toolbin/bcftools/plugins:$HOME/toolbin/samtools:$HOME/toolbin/htslib
+
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -325,6 +333,7 @@ else
 fi
 unset __conda_setup
 conda deactivate
+
 # Ruby variables
 export GEM_HOME="$HOME/gems"
 if [ -f "/home/drew/.gem/ruby/2.7.0/" ]; then
