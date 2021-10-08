@@ -16,7 +16,9 @@ if [ -e $HOME/.bash_aliases ]; then
 fi
 
 # Path modifications
-export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/bcftools:$HOME/toolbin/bcftools/plugins:$HOME/toolbin/samtools:$HOME/toolbin/htslib
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+# export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/bcftools:$HOME/toolbin/bcftools/plugins:$HOME/toolbin/samtools:$HOME/toolbin/htslib:$JAVA_HOME/bin
 
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
