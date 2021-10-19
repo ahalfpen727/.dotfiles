@@ -6,11 +6,11 @@
 
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
-#options(download.file.method = "libcurl")
-options(download.file.method = "wget")
-options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.13/bioc",
-                    BioCann="https://bioconductor.org/packages/3.13/data/annotation",
-                    BioCexp="https://bioconductor.org/packages/3.13/data/experiment",
+options(download.file.method = "libcurl")
+#options(download.file.method = "wget")
+options(repos = c(BioCsoft="https://bioconductor.org/packages/3.14/bioc",
+                    BioCann="https://bioconductor.org/packages/3.14/data/annotation",
+                    BioCexp="https://bioconductor.org/packages/3.14/data/experiment",
                     Rforge="http://r-forge.r-project.org",
                     CRAN = "https://mirrors.nics.utk.edu/cran/"))
 
