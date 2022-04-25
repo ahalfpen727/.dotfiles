@@ -6,13 +6,20 @@
 
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
-options(download.file.method = "libcurl")
-#options(download.file.method = "wget")
-options(repos = c(BioCsoft="https://bioconductor.org/packages/3.14/bioc",
-                    BioCann="https://bioconductor.org/packages/3.14/data/annotation",
-                    BioCexp="https://bioconductor.org/packages/3.14/data/experiment",
-                    Rforge="http://r-forge.r-project.org",
-                    CRAN = "https://mirrors.nics.utk.edu/cran/"))
+## .First() run at the start of every R session.
+## Use to load commonly used packages?
+.First <- function() {
+    options(download.file.method = "libcurl")
+    #options(download.file.method = "wget")
+    options(repos = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
+                      BioCann="https://bioconductor.org/packages/3.10/data/annotation",
+                      BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
+                      Rforge="http://r-forge.r-project.org",
+                      BioCworkflows="https://bioconductor.org/packages/3.10/workflows",
+                      # CRAN = "https://mirrors.nics.utk.edu/cran/",
+                      CRAN="https://cran.rstudio.com"))
+    cat("\nSuccessfully loaded .Rprofile at", date(), "\n")
+}
 
 "%nin%" <- function(x, y) !(x %in% y)
 ## Returns names(df) in single column, numbered matrix format.
@@ -45,12 +52,6 @@ unrowname <- function(x) {
 ## Attach all the variables above
 attach(.env)
 
-## .First() run at the start of every R session.
-## Use to load commonly used packages?
-.First <- function() {
-	# library(ggplot2)
-	cat("\nSuccessfully loaded .Rprofile at", date(), "\n")
-}
 
 ## .Last() run at the end of the session
 .Last <- function() {
