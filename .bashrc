@@ -1,5 +1,6 @@
 #!bin/bash
 # ~/.bashrc: executed by bash for non-login shells.
+
 case $- in
     *i*) ;;
       *) return;;
@@ -30,6 +31,7 @@ if ! shopt -oq posix; then
 fi
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
+
 if [[ $iatest > 0 ]]; then
     bind "set completion-ignore-case on";
     # Show auto-completion list automatically, without double tab
@@ -38,6 +40,7 @@ if [[ $iatest > 0 ]]; then
     bind "set bell-style visible";
 fi
 # If this is an xterm set the title to user@host:dir
+
 case "$TERM" in
     xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"

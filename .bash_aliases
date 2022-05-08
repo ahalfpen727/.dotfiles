@@ -1,4 +1,5 @@
 #!bin/bash
+
 ################################################
 # file executed by bash for non-login shells.
 ################################################
@@ -74,6 +75,7 @@ alias remount="sudo mount -o remount,rw"
 #####################################################################
 # aliases for maneuvering around the directory heirarchy
 #####################################################################
+
 # ls aliases
 alias ls='ls -altghr --color=auto -hF --group-directories-first'
 alias lss='ls ../ -altghr --color=auto -hF --group-directories-first'
@@ -96,17 +98,17 @@ alias pushorigin="git push -u origin master"
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export LS_COLORS="di=1;34;40:ln=1;36;40:so=1;35;40:pi=1;93;40:ex=1;31;40:bd=1;34;46:cd=1;34;43:su=0;41:sg=0;46:tw=0;47:ow=0;43"
 
-#########################################################                                                            
+#########################################################
 # http://norbauer.com/notebooks/code/notes/ls-colors-and-terminal-app
 # used BSD pattern ExGxFxDxBxEgEdxbxgxhxd on http://geoff.greer.fm/lscolors/
 # I specified the colors by looking manually at After switching to RStudio:
 # https://askubuntu.com/questions/466198/how-do-i-change-the-color-for-directories-with-ls-in-the-console
-#########################################################                                                            
+#########################################################
 #alias repos='sudo egrep -h -v -E "(^#)|(^$)" /etc/apt/sources.list $(ls /etc/apt/sources.list.d/*.list 2> /dev/null)'
 
 #########################################################
 # Conda commands
-#########################################################                                                                                
+#########################################################
 
 alias activate='conda activate'
 alias deactivate='conda deactivate'
@@ -122,7 +124,7 @@ alias chgrp='chgrp --preserv'
 
 #######################
 # cd aliases
-#######################                                                                            
+#######################
 
 alias less='less -r'
 alias where='type -a'
@@ -138,16 +140,20 @@ alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 
-#################                                                              # Spelling typos                                                               #################                                                                                  
+#################
+# Spelling typos
+#################
+
 alias ks='ls'
 alias xs='cd'
 alias vf='cd'
 alias moer='more'
 alias moew='more'
 
-#######################                                                        # ls customized
-#######################                                                                           
-alias ls='ls -FC --color'
+#######################
+# ls customized
+#######################
+
 alias ld='ls -d */'
 alias ll='ls -l'
 alias la='ls -A'
