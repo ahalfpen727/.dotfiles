@@ -43,30 +43,31 @@ alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazona
 #####################################################################
 # bioinformatics tool env variables
 #####################################################################
-export BCFTOOLS_PLUGINS="~/toolbin/bcftools/plugins/"
-export PICARD="~/toolbin/picard/build/libs/picard.jar"
-export GATK="~/toolbin/gatk-4.2.2.0/gatk-package-4.2.2.0-local.jar"
-export GATK2="~/toolbin/gatk-4.2.6.1/gatk-package-4.2.6.1-local.jar"
-export SNPEFF="~/toolbin/snpEff/snpEff.jar"
-#export EAGLE="~/toolbin/eagle_v2.4.1"
+export BCFTOOLS_PLUGINS="$HOME/toolbin/bcftools/plugins/"
+export PICARD="$HOME/toolbin/picard/build/libs/picard.jar"
+export GATK="$HOME/toolbin/gatk-4.2.2.0/gatk-package-4.2.2.0-local.jar"
+export GATK2="$HOME/toolbin/gatk-4.2.6.1/gatk-package-4.2.6.1-local.jar"
+export SNPEFF="$HOME/toolbin/snpEff/snpEff.jar"
+#export EAGLE="$HOME/toolbin/eagle_v2.4.1"
 #####################################################################
 # bioinformatics aliases
 #####################################################################
+alias fastqc="$HOME/toolbinFastQC/fastqc"
 alias picard="java -jar $PICARD"
 alias gatk="java -jar $GATK"
-alias igv="bash ~/toolbin/IGV/igv.sh"
-alias igvtools="bash ~/toolbin/IGV/igvtools"
-alias iaap="~/toolbin/iaap-cli/iaap-cli gencall"
+alias igv="bash $HOME/toolbin/IGV/igv.sh"
+alias igvtools="bash $HOME/toolbin/IGV/igvtools"
+alias iaap="$HOME/toolbin/iaap-cli/iaap-cli gencall"
 alias eagle="bash $EAGLE"
 alias snpeff="java -jar $SNPEFF"
 #alias bamseek="java -jar BAMseek2011July24.jar"
-#alias plink="~/toolbin/plink"
-#alias beagle="java -jar ~/toolbin/beagle.jar"
-#lias bref3="java -jar ~/toolbin/bref3.jar"
-#alias impute5="~/toolbin/impute5"
-#alias imp5Converter="~/toolbin/imp5Comverter"
+#alias plink="$HOME/toolbin/plink"
+#alias beagle="java -jar $HOME/toolbin/beagle.jar"
+#lias bref3="java -jar $HOME/toolbin/bref3.jar"
+#alias impute5="$HOME/toolbin/impute5"
+#alias imp5Converter="$HOME/toolbin/imp5Comverter"
 # nextflow
-alias nextflow="~/.dotfiles/nextflow.sh"
+alias nextflow="$HOME/.dotfiles/nextflow.sh"
 # Conda commands
 alias activate='conda activate'
 alias deactivate='conda deactivate'
