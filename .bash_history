@@ -1597,3 +1597,101 @@ sudo apt-get install cmake
 cmake ..
 make
 ls
+cp .bash* .dotfiles/
+cp .emacs .dotfiles/ .emacs.d/
+cp .emacs .dotfiles/
+cp .emacs .emacs.d/
+cd .dotfiles/
+git add .
+git commit -m "updated .bash files"
+git push
+cd ../.emacs.d/
+git add .
+git commit -m "updated .emacs file"
+git push
+cd ../toolbin/
+rm gatk-4.2.6.1.zip GATK_source_6_28_2010.tar breseq-0.36.0-Linux-x86_64
+rm gatk-4.2.6.1.zip GATK_source_6_28_2010.tar breseq-0.36.0-Linux-x86_64.tar.gz 
+ls
+mv matlab_R2021a_glnxa64.zip matlab_R2021a_glnxa64/matlab-R2021a-install.zip
+ls
+sudo apt-get install -y     openjdk-8-jre-headless     g++     python3.7 python3-pip     libopenblas-base liblapack3
+python3.7 -m pip install hail
+python -m pip install hail
+emacs ../.bash_aliases 
+source ../.bash_aliases 
+python -m pip install hail
+source ../.bash_aliases 
+python
+emacs ../.bash_aliases 
+source ../.bash_aliases 
+python
+python -m pip install hail
+conda list env
+conda list 
+conda activate
+$PATH
+cd /usr/lib/jvm/java-11-openjdk-amd64/bin/
+cd
+cd /usr/local/
+cd lib/
+cd ../bin/
+cd ../../bin/
+emacs .bashrc
+source .bashrc
+$PATH
+cd /usr/lib/jvm/java-11-openjdk-amd64/bin
+df -lh
+chown
+man chown
+sudo chown -hR drew /media/drew/mSATA250/
+cd /media/drew/mSATA250/
+cd 
+sudoemacs /etc/profile.d/path.sh
+source /etc/profile.d/path.sh
+$PATH
+cd ; emacs .bashrc
+source .bash_aliases
+$PATH
+source .bashrc
+source .bash_profile 
+$PATH
+emacs .bash_profile 
+source .bash_profile 
+emacs .bash_aliases
+emacs .bashrc
+source .bashrc
+$PATH
+source .bash_profile
+source .bashrc
+source .bash_aliases
+cd .local/bin/
+cd
+emacs .profile 
+source .profile 
+$PATH
+source .bash_aliases
+source .bashrc
+source .bash_aliases
+source .bash_profile
+ls
+$PATH
+cd /home/drew/.local/bin
+cd
+emacs .profile 
+source .profile 
+$PATH
+emacs .profile
+source .profile 
+$PATH
+emacs .bashrc
+source .bashrc
+$PATH
+source .profile
+source .bash*
+rm .bash*.~*
+;s
+ls
+rm .profile*.~*
+ls
+more .bash_logout 

@@ -12,8 +12,8 @@ if [ -e ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 # Path modifications
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-# export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+#export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export PATH=$PATH:~/toolbin:~/toolbin/bcftools:~/toolbin/bcftools/plugins:~/toolbin/samtools:~/toolbin/htslib:$JAVA_HOME/bin
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
@@ -99,7 +99,7 @@ export HISTSIZE=500
 # Don't put duplicate lines in the history and do not add lines that start with a space
 set -o notify
 export HISTCONTROL=erasedups:ignoredups:ignorespace
-export PYTHONSTARTUP="/home/drew/.pythonrc"
+export PYTHONSTARTUP="$HOME/.pythonrc"
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
@@ -244,24 +244,26 @@ extract () {
    fi
 }
 # >>> conda initialize >>>
-__conda_setup="$('/home/drew/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/drew/miniconda3/etc/profile.d/conda.sh" ]; then
- . "/home/drew/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+ . "$HOME/miniconda3/etc/profile.d/conda.sh"  # commented out by conda initialize
     else
- export PATH="/home/drew/miniconda3/bin:$PATH"  # commented out by conda initialize
+ export PATH="$PATH:$HOME/miniconda3/bin"  # commented out by conda initialize
     fi
 fi
 unset __conda_setup
 conda deactivate
 # Ruby variables
-export GEM_HOME="~/gems"
-if [ -f "/home/drew/.gem/ruby/2.7.0/" ]; then
-    export PATH_TO_RUBY="/home/drew/.gem/ruby/2.7.0/bin"
-    PATH=$PATH:"/home/drew/.gem/ruby/2.7.0/":"/home/drew/.gem/ruby/2.7.0/bin":"/home/drew/.gem/ruby/2.7.0/gems":"~/.gem/ruby/2.7.0/gems/gemsbundler-2.1.4"       
+export GEM_HOME="$HOME/gems"
+if [ -f "$HOME/.gem/ruby/2.7.0/" ]; then
+    export PATH_TO_RUBY="$HOME/.gem/ruby/2.7.0/bin"
+    PATH=$PATH:"$HOME/.gem/ruby/2.7.0/":"$HOME/.gem/ruby/2.7.0/bin":"$HOME/.gem/ruby/2.7.0/gems":"$HOME/.gem/ruby/2.7.0/gems/gemsbundler-2.1.4"       
 fi
+
+
 
 
 

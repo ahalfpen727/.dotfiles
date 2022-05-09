@@ -31,10 +31,10 @@ alias chgrp='chgrp --preserv'
 #############################################################
 # Python aliases
 #############################################################
-alias python='python3.6'
-alias pyve='python3 -m venv ./venv'
+alias python='python3.8'
+alias pip3='pip3'
+alias pyve='python -m venv ./venv'
 alias pyva='source ./venv/bin/activate'
-#alias pip='pip3'
 ##############################################
 # shorten ssh command to the ghpcc cluster
 ##############################################
