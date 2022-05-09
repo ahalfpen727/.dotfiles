@@ -1407,3 +1407,193 @@ source .bash_aliases
 emacs .emacs
 emacs --debug-init
 rm new.emacs 
+cp .bash* .dotfiles/
+cp .emacs .emacs.d/
+cp .emacs .dotfiles/
+more .profile 
+ls
+rm .emacs.~*
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs 
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+emacs .emacs
+emacs --debug-init
+cd .dotfiles/
+git add .
+git commit -m "modified aliases and emacs config files"
+git push
+cd ../.emacs.d/
+cd emacs-genome/
+cd ../
+git add .
+git commit -m "new .emacs files"
+git push
+ls
+cd
+cd toolbin/
+cd gatk-4.2.2.0/
+mv The\ Genome\ Analysis\ Toolkit\ A\ MapReduce\ framework\ for\ analyzing\ next-generation\ DNA\ sequencing\ data.pdf  ../GATK-resources/
+mv Best_Practices_GATK_Variant_Detection_v1_0.pdf ../GATK-resources/
+mv Genome\ Analysis\ with\ MapReduce.gatk.pdf ../GATK-resources/
+ls
+unzip gatkPythonPackageArchive.zip 
+ls
+rm gatkPythonPackageArchive.zip 
+cd
+rm .emacs.~*
+ls
+rm ..bash_aliases.swp 
+ls
+rm .emacs~
+emacs .bash_aliases 
+cd toolbin/
+cd snpEff_latest_core/
+mv snpEff/ ..
+ls
+cd ..
+rm -rf snpEff_latest_core/
+cd picard/
+cd src/
+cd main/
+cd h
+cd java/
+cd picard/
+cd ../../../
+cd ../
+cd etc/
+cd ../scripts/
+cd travis/
+cd ../../
+ls ./*/*/*
+cd //
+cd
+emacs .bash_aliases
+cd toolbin/
+cd picard/
+ls
+./gradlew test
+picard
+gatk
+cd ../
+cd toolbin/
+cd gatk-4.2.2.0/
+emacs ../.bash_aliases
+soure ../.bash_aliases
+source ../.bash_aliases
+gatk
+cd
+emacs .emacs
+nano .bash_aliases 
+dir
+vdir
+emacs .bash_aliases
+source .bash_aliases
+;s
+ls
+sudo apt-get install ruby
+which ruby
+ruby
+cd
+emacs .bash_aliases
+emacs .bashrc
+cp .bashrc.~1~ .dotfiles/old.longer.bashrc
+emacs .bashrc
+source .bashrc
+ls
+rm .bash*~
+ls
+cp .bashrc .dotfiles/
+cp .bash_aliases .dotfiles/
+emacs .bash_profile 
+source .bash_profile 
+ls
+rm .bash_profile.~1~ 
+cp .bash_profile .dotfiles/
+more .bash_logout 
+more .bash_history 
+emacs .bashrc
+ls
+emacs .bashrc
+cd toolbin/
+cd breseq-0.36.0-Linux-x86_64/
+more README 
+cd bin/
+breseq
+bash breseq 
+cd ../
+cd documentation/
+firefox installation.html 
+cd ..
+./bin/breseq 
+pkgs
+cd toolbin/
+samtools
+which samtools
+which bcftools
+bcftools
+bcftools plugin
+bcftools plugin -l
+ls
+htslib
+sudo apt install wget unzip git g++ zlib1g-dev bedtools bio-eagle shapeit4 bwa bowtie2
+sudo apt install libbz2-dev libssl-dev liblzma-dev libgsl0-dev
+wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/iaap/iaap-cli-linux-x64-1.1.0.tar.gz
+tar xzvf iaap-cli-linux-x64-1.1.0.tar.gz -C $HOME/toolbin/ iaap-cli-linux-x64-1.1.0/iaap-cli --strip-components=1
+ls
+cd iaap-cli/
+iaap-cli
+bash iaap-cli
+cd
+emacs .bash_aliases 
+source .bash_aliases 
+iaap
+emacs .bash_aliases 
+source .bash_aliases 
+iaap
+$IAAP
+cd toolbin/iaap-cli/
+cd
+emacs .bash_aliases 
+$IAAP
+source .bash_aliases
+$IAAP
+iaap
+emacs .bash_aliases 
+source .bash_aliases
+iaap
+bash toolbin/iaap-cli/iaap-cli
+toolbin/iaap-cli/iaap-cli
+~/toolbin/iaap-cli/iaap-cli
+emacs .bash_aliases 
+source .bash_aliases
+iaap
+iaap gencall
+cd toolbin/
+wget https://www.cog-genomics.org/static/bin/plink/plink_linux_x86_64.zip
+ls
+git clone https://github.com/griffithlab/regtools
+cd regtools/
+mkdir build; cd build; cmake ..; make
+mkdir build; cd build; make
+mkdir build; cd build; make ..
+ls
+cd ../../
+rm -rf build/
+sudo apt-get install cmake
+cmake ..
+make
+ls

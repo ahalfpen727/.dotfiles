@@ -1,20 +1,26 @@
 #!bin/bash
+# ~/.bashrc: executed by bash for non-login shells.
+
 case $- in
     *i*) ;;
       *) return;;
 esac
+
 # envrc variables
 if [ -f ~/.envrc ]; then
    source ~/.envrc
 fi
+
 # Alias definitions.
-if [ -e ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -e $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
 fi
+
 # Path modifications
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-export PATH=$PATH:~/toolbin:~/toolbin/bcftools:~/toolbin/bcftools/plugins:~/toolbin/samtools:~/toolbin/htslib:$JAVA_HOME/bin
+export PATH=$PATH:$HOME/toolbin:$HOME/toolbin/bcftools:$HOME/toolbin/bcftools/plugins:$HOME/toolbin/samtools:$HOME/toolbin/htslib:$JAVA_HOME/bin
+
 # Enable bash programmable completion features in interactive shells
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -23,7 +29,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# Ignore case on auto-completion # Note: bind used instead of sticking these in .inputrc
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+
 if [[ $iatest > 0 ]]; then
     bind "set completion-ignore-case on";
     # Show auto-completion list automatically, without double tab
@@ -32,6 +40,7 @@ if [[ $iatest > 0 ]]; then
     bind "set bell-style visible";
 fi
 # If this is an xterm set the title to user@host:dir
+
 case "$TERM" in
     xterm*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
@@ -39,11 +48,25 @@ case "$TERM" in
 *)
     ;;
 esac
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    # add color to the output of ls
+    alias ls='ls -altghr --color=auto -hF --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 else
-    echo "no .dircolors file present in /usr/bin"
+    # add color to the output of ls
+    alias ls='ls -altghr --color=auto -hF --group-directories-first'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
@@ -54,6 +77,7 @@ export EDITOR='emacs -nw'
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -74,6 +98,7 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 # LESS man page colors (makes Man pages more readable).
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -82,6 +107,7 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
 # Check the window size after each command and, if needed update the values of LINES and COLUMNS
 shopt -s checkwinsize
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
@@ -91,6 +117,7 @@ shopt -s histappend
 shopt -s checkwinsize
 # "**" pattern used in a pathname expansion will match all files and 0 or more dirs and subdirs
 shopt -s globstar
+
 alias h=history
 PROMPT_COMMAND='history -a'
 # Expand the history size
@@ -100,9 +127,12 @@ export HISTSIZE=500
 set -o notify
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 export PYTHONSTARTUP="/home/drew/.pythonrc"
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
 NCPU=$(grep -c 'processor' /proc/cpuinfo)    # Number of CPUs
+
 #-------------------------------------------------------------
 # File & strings related functions:
 #-------------------------------------------------------------
@@ -158,6 +188,7 @@ ftext ()
 	# optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
 	grep -iIHrn --color=always "$1" . | less -r
 }
+
 # Copy file with a progress bar
 cpp()
 {
@@ -179,7 +210,7 @@ cpp()
 	END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
 }
 # Copy and go to the directory
-cpgo ()
+cpg ()
 {
 	if [ -d "$2" ];then
 		cp $1 $2 && cd $2
@@ -188,7 +219,7 @@ cpgo ()
 	fi
 }
 # Move and go to the directory
-mvgo ()
+mvg ()
 {
 	if [ -d "$2" ];then
 		mv $1 $2 && cd $2
@@ -197,7 +228,7 @@ mvgo ()
 	fi
 }
 # Create and go to the directory
-mkdirgo ()
+mkdirg ()
 {
 	mkdir -p $1
 	cd $1
@@ -243,6 +274,51 @@ extract () {
        echo "'$1' is not a valid file!"
    fi
 }
+# Returns a color indicating system load.
+function load_color()
+{
+    local SYSLOAD=$(load)
+    if [ ${SYSLOAD} -gt ${XLOAD} ]; then
+        echo -en ${ALERT}
+    elif [ ${SYSLOAD} -gt ${MLOAD} ]; then
+        echo -en ${Red}
+    elif [ ${SYSLOAD} -gt ${SLOAD} ]; then
+        echo -en ${BRed}
+    else
+        echo -en ${Green}
+    fi
+}
+# Returns a color according to free disk space in $PWD.
+function disk_color()
+{
+    if [ ! -w "${PWD}" ] ; then
+        echo -en ${Red}
+        # No 'write' privilege in the current directory.
+    elif [ -s "${PWD}" ] ; then
+        local used=$(command df -P "$PWD" |
+                   awk 'END {print $5} {sub(/%/,"")}')
+        if [ ${used} -gt 95 ]; then
+            echo -en ${ALERT}           # Disk almost full (>95%).
+        elif [ ${used} -gt 90 ]; then
+            echo -en ${BRed}            # Free disk space almost gone.
+        else
+            echo -en ${Green}           # Free disk space is ok.
+        fi
+    else
+        echo -en ${Cyan}
+        # Current directory is size '0' (like /proc, /sys etc).
+    fi
+}
+# Returns a color according to running/suspended jobs.
+function job_color()
+{
+    if [ $(jobs -s | wc -l) -gt "0" ]; then
+        echo -en ${BRed}
+    elif [ $(jobs -r | wc -l) -gt "0" ] ; then
+        echo -en ${BCyan}
+    fi
+}
+
 # >>> conda initialize >>>
 __conda_setup="$('/home/drew/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -256,17 +332,10 @@ else
 fi
 unset __conda_setup
 conda deactivate
+
 # Ruby variables
-export GEM_HOME="~/gems"
+export GEM_HOME="$HOME/gems"
 if [ -f "/home/drew/.gem/ruby/2.7.0/" ]; then
     export PATH_TO_RUBY="/home/drew/.gem/ruby/2.7.0/bin"
     PATH=$PATH:"/home/drew/.gem/ruby/2.7.0/":"/home/drew/.gem/ruby/2.7.0/bin":"/home/drew/.gem/ruby/2.7.0/gems":"~/.gem/ruby/2.7.0/gems/gemsbundler-2.1.4"       
 fi
-
-
-
-
-
-
-
-
