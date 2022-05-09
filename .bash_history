@@ -1695,3 +1695,53 @@ ls
 rm .profile*.~*
 ls
 more .bash_logout 
+cp .bash* .dotfiles/
+cd .dotfiles/
+git add .
+git commit -m "fixing PATH in .bash files"
+git push
+cd Emacs-Config-Files/
+more .emacs 
+ls
+mv .emacs init.el
+ls
+cd ..
+mv .emacs Emacs-Config-Files/
+cd R-Config-Files/
+diff .Renviron ../.Renviron 
+emacs .Renviron
+emacs .Rprofile 
+cd
+emacs .Rprofile 
+fastqc
+sudo apt-get install fastqc
+picard
+picard -h
+docker pull broadinstitute/gatk:4.2.6.1
+sudo apt install augustus augustus-data augustus-doc
+docker run -it broadinstitute/gatk:4.2.6.1
+docker pull liujihe/single_cell_rnaseq
+docker pull bioconductor/release_base2:latest
+cd toolbin/bwa-docker/
+docker build -t mybwa
+docker build -t bwadock .
+source .profile 
+source .bashrc
+source .bash_aliases 
+source .bash_profile 
+$PATH
+cd ..; curl -fsSL get.nextflow.io | bash
+ls
+sudo mv nextflow /usr/local/bin
+export PATH=$PATH:/usr/local/bin/nextflow
+nextflow
+git clone https://github.com/SciLifeLab/NGI-RNAseq.git
+nextflow run NGI-RNAseq/main.nf
+ls
+export NXF_HOME=/usr/local/bin/nextflow 
+cd
+emacs .bashrc
+source .bashrc
+source .bash_profile 
+source .bash_aliases 
+emacs .bashrc

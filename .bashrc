@@ -12,6 +12,7 @@ if [ -e ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 # Path modifications
+export NXF_HOME=/usr/local/bin/nextflow 
 #export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export PATH=$PATH:~/toolbin:~/toolbin/bcftools:~/toolbin/bcftools/plugins:~/toolbin/samtools:~/toolbin/htslib:$JAVA_HOME/bin

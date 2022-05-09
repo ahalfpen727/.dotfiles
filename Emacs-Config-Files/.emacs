@@ -1,56 +1,119 @@
+;; General initialisation
+(setq load-path                         ; Search $HOME/lib/emacs for libraries
+      (cons "/home/drew/.emacs.d/lisp/" load-path))
+
+(if (display-graphic-p)                 ; Is this a graphics display?
+    (progn                              ; Yes...
+      (setq frame-title-format "%b - Emacs") ; Always show buffer name in frame
+      (setq frame-resize-pixelwise t)   ;   Resize frames in non-char increments
+      (setq pop-up-frames nil)          ;   Don't use separate frames for buffers
+      (tool-bar-mode 0)                 ;   Turn the tool-bar off
+      (set-scroll-bar-mode 'right)      ;   Make the scroll bar on the right
+      (setq mouse-yank-at-point t)      ;   Insert text at text point
+      (mouse-wheel-mode t)))             ;   Allow the use of the mouse wheel
+
+(progn                                ; No, we are in a terminal
+	(menu-bar-mode 0)                   ;   Turn the menu-bar off
+	(when (fboundp #'tool-bar-mode)
+	  (tool-bar-mode 0))              ;   and the tool-bar, too
+	(xterm-mouse-mode 1))              ;   Enable the mouse under xterm(1)
+
+(prefer-coding-system 'utf-8)           ; Use UTF-8 by default
+(set-language-environment "utf-8")      ; We are a UTF-8 shop...
+(setq inhibit-startup-buffer-menu nil)  ; Show buffer menu at startup
+(setq file-name-coding-system 'utf-8)   ; Filenames are also in UTF-8
+(setq x-select-request-type             ; Specify X11 Selection preferences
+      '(UTF8_STRING COMPOUND_TEXT TEXT STRING)) ; (UTF-8 is always best)
+(setq select-enable-clipboard t)        ; Use the clipboard under X11                                 
+(line-number-mode 1)                    ; Display the line number
+(column-number-mode 1)                  ; Display the column number
+(file-name-shadow-mode 1)               ; Dim parts of filenames being ignored
+(transient-mark-mode 0)                 ; Don't enable transient marks
+(setq-default truncate-lines t)         ; Don't display continuation lines
+(when (fboundp 'global-eldoc-mode)      ; Emacs 25.1 and later
+  (global-eldoc-mode 0))                ; Don't automatically display help
+(setq inhibit-startup-screen t)
+(delete-selection-mode 1)
+(setq scroll-conservatively 1000)
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse)
+(setq ring-bell-function 'ignore)
+(display-time-mode 1)
+;;(global-linum-mode t)
+
+;; emacs default font
+;;(when (display-graphic-p)
+;;  (set-default-font "-ADBO-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1"))
+(add-to-list 'default-frame-alist
+	     '(font . "Inconsolata"))
+(add-to-list 'default-frame-alist
+	     '(font . "-ADBO-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1"))
+(add-to-list 'default-frame-alist
+	     '(font . "DejaVu Sans Mono-12"))
+
+;; mouse stuff from http://www.emacswiki.org/emacs/SmoothScrolling
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+; text mode hooks
+(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+; (add-hook 'text-mode-hook 'turn-on-flyspell) ; this breaks Rnw editing with ess
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(customize-set-variable 'frame-background-mode 'dark)
+;; **********************************************************************
+;; Initialize package sources
 (require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-	     '("melpa-stable" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-	     '("gnu" . "http://elpa.gnu.org/packages/") t)
-  (package-initialize)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("elpy" . "https://jorgenschaefer.github.io/packages/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))(require 'package)
+;; Autoloaded non-ELPA/MELPA packages                                                                                                                                                                              
+(autoload 'svn-status "psvn"
+  "Examine the status of a Subversion working directory." t nil)
+(autoload 'insert-random-uuid "uuidgen"
+  "Insert a random UUID into the buffer." t nil)
 
-;;ESS (Emacs Speaks Statistics) stuff
-; bash-like comments after code
-(add-to-list 'load-path "~/.emacs.d/comment-edit.el")
-(add-to-list 'load-path "~/.emacs.d/ess-site.el")
-
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(global-font-lock-mode 1)               ; Enable syntax highlighting
+(setq font-lock-maximum-decoration t)   ;   with the best results
+(defvar font-lock-todo-keywords
+  '(("\\(@@@\\|\\_<BUG:\\|\\_<FIXME:\\|\\_<NB:\\|\\_<NOTE:\\|\\_<TODO:\\|\\_<XXX:\\|\\_<XXX\\_>\\)" .
+     (1 'warning t)))
+  "TODO-style keywords for syntax highlighting.")
 (add-to-list 'load-path "~/.emacs.d/lisp/csv-mode.el") 
 (add-to-list 'load-path "~/.emacs.d/lisp/pager.el")
 (add-to-list 'load-path "~/.emacs.d/lisp/ansi-color.el")
-;;(require 'lisp)
+(add-to-list 'load-path "~/.emacs.d/comment-edit.el")
+;;ESS (Emacs Speaks Statistics) stuff ; bash-like comments after code
+(let ((default-directory "~/.emacs.d/ess/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory "~/.emacs.d/lisp/"))
+  (normal-top-level-add-subdirs-to-load-path))
+(let ((default-directory "~/.emacs.d/emacs-compbio-kit/"))
+  (normal-top-level-add-subdirs-to-load-path))
 
-; markdown and polymode stuff (for using Rmd files)
-; file available from: http://jblevins.org/projects/markdown-mode/
 (add-to-list 'load-path "~/.emacs.d/mardown-mode/")
+(add-to-list 'load-path "~/.emacs.d/snakemake-mode/")
+(add-to-list 'load-path "~/.emacs.d/snakemake-mode/snakemake.el")
 (add-to-list 'load-path "~/.emacs.d/mardown-mode/markdown-mode.el")
+(require 'markdown-mode)
 (autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-; file available from: https://github.com/vspinu/polymode
-(add-to-list 'load-path "~/.emacs.d/poly-mode/")
-(add-to-list 'load-path "~/.emacs.d/poly-mode/-mode.el")
-(unless (package-installed-p 'polymode)
-  (package-install 'poly-markdown))
-(require 'poly-R)
-(require 'poly-markdown)
-
-;;(setq load-path (append '("~/.emacs.d/poly-mode/"  "~/emacs.d/poly-mode/modes") load-path))
-;;(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown+r-mode))
-
+;; So ESS can find Rterm
+(setq inferior-R-program-name "/usr/bin/R")
 (setq csv-separators '("," "\t"))
-(require 'ess-r-mode)
-(require 'ess-site)
-;;(require 'color-theme-sanityinc-tomorrow-blue)
+;;(require 'init-ess-r-mode)
+;;(require 'init-ess-site)
+
 (org-babel-do-load-languages
 'org-babel-load-languages
 '((R . t)))
 
-;; snakemake mode added from .emacs.d/
-(add-to-list 'load-path "~/.emacs.d/snakemake-mode/")
-(add-to-list 'load-path "~/.emacs.d/snakemake-mode/snakemake.el")
-(require 'snakemake-mode)
-
 (setq inferior-R-program-name "/usr/lib/R")
-(ess-toggle-underscore nil)
+;;(ess-toggle-underscore nil)
 (setq ess-default-style 'DEFAULT)
 (setq ess-indent-level 2)
 (setq ess-indent-with-fancy-comments nil)
@@ -60,44 +123,14 @@
 ; disable C-c C-c ess-eval-buffer
 (add-hook 'ess-mode-hook '(lambda () (define-key ess-mode-map "\C-c\C-c" nil)))
 ;(setq eldoc-echo-area-use-multiline-p t)
-(add-to-list 'load-path "~/.emacs.d/mardown-mode/")
-
 ; window splitting, removing panes, etc
 (global-set-key (kbd "M-0") 'delete-other-windows) ; 【Alt+0】 unsplit all
 (global-set-key (kbd "M-+") 'split-window-right) ; 【Alt+'+'】add split
 (global-set-key (kbd "M-RET") 'other-window) ; 【Alt+Return】 move cursor to next pane
 (global-set-key (kbd "M-1") 'delete-window)  ; remove current pane
-
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
 (global-unset-key (kbd "\C-x DEL") )
 (global-unset-key (kbd "\C-t") )
-(setq inhibit-startup-screen t)
-(delete-selection-mode 1)
-(setq scroll-conservatively 1000)
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'reverse)
-(setq ring-bell-function 'ignore)
-(display-time-mode 1)
-;(global-linum-mode t)
-
-; emacs window default font
-(when (display-graphic-p)
-  (set-default-font "-ADBO-Source Code Pro-normal-normal-normal-*-18-*-*-*-m-0-iso10646-1"))
-
-;(customize-set-variable 'frame-background-mode 'dark)
-;; mouse stuff from http://www.emacswiki.org/emacs/SmoothScrolling
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-
-; text mode hooks
-(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
-; (add-hook 'text-mode-hook 'turn-on-flyspell) ; this breaks Rnw editing with ess
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-
-; auto-complete - requires installing 'auto-complete' package via MELPA
-(ac-config-default) 
-
 ; version control                                                                
 (setq version-control t ;; Use version numbers for backups.                  
   kept-new-versions 10  ;; Number of newest versions to keep.                
@@ -105,3 +138,26 @@
   delete-old-versions t ;; Don't ask to delete excess backup versions.       
   backup-by-copying t)  ;; Copy all files, don't rename them.                
 (setq vc-make-backup-files t)
+; C-n add new lines at the end of buffer
+(setq next-line-add-newlines t)
+; open emacs full screen
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+; Make Emacs highlight paired parentheses
+(show-paren-mode 1)
+
+; markdown and polymode stuff (for using Rmd files)
+; file available from: http://jblevins.org/projects/markdown-mode/
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (json-mode org htmlize db sqlite3 sqlite markdown-mode+ ess-R-data-view bug-hunter))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
