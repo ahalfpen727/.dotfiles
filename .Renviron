@@ -8,4 +8,4 @@ R_INCLUDE_DIR=/usr/share/R/include
 PAGER=/usr/bin/less
 R_MAX_NUM_DLLS=250
 RSTUDIO_DISABLE_SECURE_DOWNLOAD_WARNING=1
-R_DEFAULT_PACKAGES='tidyverse,ggplot2'
+#R_DEFAULT_PACKAGES='tidyverse,ggplot2'

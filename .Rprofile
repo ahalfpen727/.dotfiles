@@ -1,8 +1,8 @@
 # .Rprofile in bash format \n R format
-#Sys.setenv(R_USER="~/R/x86_64-pc-linux-gnu-library/3.6"); R.home("/usr/lib/R")
-#.libPaths("~/home/drew/R/x86_64-pc-linux-gnu-library/3.6")
+#Sys.setenv(R_USER="~/R/x86_64-pc-linux-gnu-library/4.1"); R.home("/usr/lib/R")
+#.libPaths("~/home/drew/R/x86_64-pc-linux-gnu-library/4.1")
 #.Library.site <- file.path(chartr("\\", "/", R.home()),
-# "/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library:~/R/x86_64-pc-linux-gnu-library/3.6")
+# "/usr/local/lib/R/site-library:/usr/lib/R/site-library:/usr/lib/R/library:~/R/x86_64-pc-linux-gnu-library/4.1")
 
 ## Create a new invisible environment for all the functions to go in so it doesn't clutter your workspace.
 .env <- new.env()
@@ -11,11 +11,11 @@
 .First <- function() {
     options(download.file.method = "libcurl")
     #options(download.file.method = "wget")
-    options(repos = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
-                      BioCann="https://bioconductor.org/packages/3.10/data/annotation",
-                      BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
+    options(repos = c(BioCsoft="https://bioconductor.org/packages/3.15/bioc",
+                      BioCann="https://bioconductor.org/packages/3.15/data/annotation",
+                      BioCexp="https://bioconductor.org/packages/3.15/data/experiment",
                       Rforge="http://r-forge.r-project.org",
-                      BioCworkflows="https://bioconductor.org/packages/3.10/workflows",
+                      BioCworkflows="https://bioconductor.org/packages/3.15/workflows",
                       # CRAN = "https://mirrors.nics.utk.edu/cran/",
                       CRAN="https://cran.rstudio.com"))
     cat("\nSuccessfully loaded .Rprofile at", date(), "\n")
