@@ -9,6 +9,7 @@ local({
     r["BioCsoft"] <- "https://bioconductor.org/packages/3.10/bioc"
     r["BioCann"] <- "https://bioconductor.org/packages/3.10/data/annotation"
     r["BioCexp"] <- "https://bioconductor.org/packages/3.10/data/experiment"
+    r["BioCworkflows"] <- "https://bioconductor.org/packages/3.10/workflows"
     r["Rforge"] <- "http://r-forge.r-project.org"
     options(repos = r)
 })
@@ -17,6 +18,7 @@ local({
 options("repos" = c(BioCsoft="https://bioconductor.org/packages/3.10/bioc",
                     BioCann="https://bioconductor.org/packages/3.10/data/annotation",
                     BioCexp="https://bioconductor.org/packages/3.10/data/experiment",
+                    BioCworkflows="https://bioconductor.org/packages/3.10/workflows",
                     Rforge="http://r-forge.r-project.org",
                     CRAN = "http://lib.stat.cmu.edu/R/CRAN/"))
 

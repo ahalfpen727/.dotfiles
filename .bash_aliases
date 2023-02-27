@@ -40,12 +40,13 @@ alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazona
 #####################################################################
 
 # bioinformatics directories
+export nexftlow="$HOME/toolbin/nextflow"
 export BCFTOOLS_PLUGINS="$HOME/toolbin/bcftools/plugins/"
 export iaap="$HOME/toolbin/iaap-cli/iaap"
 export iaap_gencall="$HOME/toolbin/iaap-cli/iaap gencall"
 export EAGLE="$HOME/toolbin/eagle_v2.4.1"
-export PICARD="$HOME/toolbin/picard/build/libs/picard-2.24.1-2-g4a9c42d-SNAPSHOT-all.jar"
-export GATK="$HOME/toolbin/gatk-4.1.9.0/gatk-package-4.1.0.0-local.jar"
+export PICARD="$HOME/toolbin/picard/build/libs/picard.jar"
+export GATK="$HOME/toolbin/gatk/build/libs/gatk.jar"
 export SNPEFF="$HOME/toolbin/snpEff/snpEff.jar"
 
 # bioinformatics aliases
