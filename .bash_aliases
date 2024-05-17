@@ -46,13 +46,12 @@ alias sshaws='ssh -i ".ssh/id_rsa.pub"  ubuntu@ec2-3-89-20-104.compute-1.amazona
 export BCFTOOLS_PLUGINS="$HOME/toolbin/bcftools/plugins/"
 export PICARD="$HOME/toolbin/picard/build/libs/picard.jar"
 export GATK="$HOME/toolbin/gatk-4.2.2.0/gatk-package-4.2.2.0-local.jar"
-export GATK2="$HOME/toolbin/gatk-4.2.6.1/gatk-package-4.2.6.1-local.jar"
 export SNPEFF="$HOME/toolbin/snpEff/snpEff.jar"
 #export EAGLE="$HOME/toolbin/eagle_v2.4.1"
 #####################################################################
 # bioinformatics aliases
 #####################################################################
-alias fastqc="$HOME/toolbinFastQC/fastqc"
+alias fastqc="$HOME/toolbin/FastQC/fastqc"
 alias picard="java -jar $PICARD"
 alias gatk="java -jar $GATK"
 alias igv="bash $HOME/toolbin/IGV/igv.sh"
