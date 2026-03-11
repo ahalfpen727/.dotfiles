@@ -3,9 +3,38 @@
 Here is some code to help reinstall everything after nuking an OS, which I have done frequently enough to warrant automation of the task. These files and commands configure bash, emacs, R, conda, java, docker, ssh, jupyter-notebook, and git.
 -------------------------------------------------------------------------------------------------------------------------------
 
+# Ubuntu Release System Update Documentation
+  ## Step-by-Step Instructions
+  ###  Disable third-party repositories (PPAs), as they can cause conflicts during the upgrade.
+  ###  Ensure update-manager-core is installed by running sudo apt install update-manager-core. 
+  ###  Update the current system' packages to ensure everything is current before the version upgrade.
+```
+bash
+```
+```
+    sudo apt update && sudo apt upgrade -y
+    sudo apt dist-upgrade -y
+        # Handles changing dependencies
+    sudo apt autoremove -y
+        # Removes obsolete packages
+```
+    If a new kernel was installed, you might be prompted to reboot the system. If the file /run/reboot-required exists, you must reboot     with sudo reboot before continuing.
+    Start the release upgrade process by running the following command in the terminal:
+
+```    
+    bash
+    sudo do-release-upgrade
+```
+    If you are running a Long Term Support (LTS) release and the next LTS version's first point release is not yet available, you might     receive a message that "No new release found". To force the upgrade to the development release (which is the stable version once        released), you can use the -d flag:
+
+```
+    bash
+    sudo do-release-upgrade -d
+```
 # R-version 3.4
-libraries for linux are distro and version specific
-In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
+## libraries for linux are distro and version specific
+## In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
+
 ```
 # ubuntu 18.04
 deb http://ppa.launchpad.net/marutter/c2d4u/ubuntu bionic main 
@@ -19,10 +48,11 @@ sudo apt-key adv --keyserver subkeys.pgp.net --recv-key 381BA480
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
 ```
+
 Afterwards, execute the following command:
+
 ```
 sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
-
 # In order to install R-version 3.5.* or update R-3.4.* to R-3.5
 # comment out the previous sources for R-3.4.* 
 # and add the  following lines to /etc/apt/sources.list as sudo user:
@@ -30,6 +60,7 @@ sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
 
 # R-version 3.5
 In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
+
 ```
 deb http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main 
 deb-src http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main 
@@ -37,10 +68,12 @@ deb http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main
 deb-src http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main 
 ```
 Afterwards, execute the following command:
+
 ```
 sudo add-apt-repository ppa:marutter/c2d4u3.5 && sudo apt update
 ```
 -------------------------------------------------------------------------------------------------------------------------------
+
 # Notedown and Ipython Notebook Running an IPython Notebook
 
 ```
@@ -62,11 +95,13 @@ notedown with_output_cells.md --to markdown --strip > no_output_cells.md
 -------------------------------------------------------------------------------------------------------------------------------
 # SSH public key authentication
 After a new installation it is important to create new private and public keys for ssh authentication. In order to enable passwordless loging to a cluster execute the following commands:
+
 ```
 ssh-keygen -t rsa
 ssh-copy-id -i .ssh/id_rsa.pub aj26b@ghpcc06.umassrc.org
 ```
 -------------------------------------------------------------------------------------------------------------------------------
+
 # AWS rsync
 
 ```
@@ -76,7 +111,8 @@ sudo rsync -av --progress -e "ssh -i .ssh/LightsailDefaultKey-us-east-1.pem" /me
 -------------------------------------------------------------------------------------------------------------------------------
 
 # Java
-Many programs like Cytoscape rely on java version 8 which can be installed using the following commands
+## Many programs like Cytoscape rely on java version 8 which can be installed using the following commands
+
 ```
 #sudo add-apt-repository ppa:webupd8team/java
 #sudo apt-get install oracle-java8-installer openjdk-8-jdk
@@ -93,40 +129,39 @@ export PATH=$PATH:$JAVA_HOME/bin
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 # Docker
-Make sure to remove previous and possibly broken docker versions before installing current version
-add the repository for ubuntu 18.04 with 
+## Make sure to remove previous and possibly broken docker versions before installing current version
+## add the repository for ubuntu 18.04 with 
+
 ```
+bash
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
 sudo apt-get update && apt-get install docker-ce docker-ce-cli containerd.io
+
 # after installation start the docker service with the following command:
 sudo systemctl status docker
 
 # To run docker without sudo use the following commands:
-
 sudo usermod -aG docker user
 sudo find ~/ -name 'docker' -print > xargs
 chmod -R 777 xargs
 
 # To run a docker container use this command:
-
-sudo docker run -i -t kalilinux/kali-linux-docker /bin/bash
 sudo docker run -i -t kalilinux/kali-linux-docker /bin/bash
 sudo docker attach container-id/name
 
 # Use below syntax to get shell access of docker container.
-
 sudo docker exec -it <CONTAINER ID/NAME> bash
 
 # find a container
-
 docker search *
-
 ```
+
 # Running the rocker container in the browser 
 username: rstudio password: rstudio
+
 ```
 docker run --rm -p 8787:8787 rocker/verse
 firefox http://localhost:8787
@@ -136,17 +171,20 @@ link hard-drive to container
 docker run --rm -p 8787:8787 -v /home/drew/umb_triley: rocker/verse
 ```
 -------------------------------------------------------------------------------------------------------------------------------
-# git
 
-Initialize a new repository
+# git
+## Initialize a new repository
+
 ```
 git init
 git add .
 git commit -m "new shit"
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
+
 ```
-… push a new repository to the remote repository
+## push a new repository to the remote repository
+
 ```
 echo "# Tailor-Secondary-Analysis" >> README.md
 git init
@@ -155,20 +193,25 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
 git push -u origin main
+
 ```
-…or push an existing repository from the command line
+## or push an existing repository from the command line
+
 ```
 git remote add origin https://github.com/ahalfpen727/Tailor-Secondary-Analysis.git
 git branch -M main
 git push -u origin main
+
 ```
-push a new commit from a new computer to an old repository
+## push a new commit from a new computer to an old repository
+
 ```
 git remote add origin git@github.com:ahalfpen727/old-repo.git
 git pull origin master --allow-unrelated-histories
 git push -u origin master
 ```
-merging two repositories
+## merging two repositories
+
 ```
 cd path/to/B
 # Change the remote origin of B to that of A:
@@ -184,41 +227,50 @@ git pull origin master
 # Push everything to A
 git merge master-holder --allow-unrelated-histories
 git push origin master
+
 ```
-Modifying default method for communicating with remote repositories
-  Modify from https to ssh
+## Modifying default method for communicating with remote repositories
+## Modify from https to ssh
+
 ```
 git remote set-url origin git@github.com:USERNAME/REPOSITORY.git.
+
 ```
-  Modify from ssh to https
+## Modify from ssh to https
+
 ```
 git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------
 # conda
-configuration for bioconda and other necessary channels
+##  configuration for bioconda and other necessary channels
+
 ```
-conda config --add channels defaults
+conda config --add channels defau#lts
 conda config --add channels bioconda
 conda config --add channels conda-forge
 
 # create env from yaml file
-
 conda env create -f env.yml
 conda env create --name EnvName --file env.yml
+
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 # Initializing Jekyll to View a Website or Blog
-Make sure that ruby and bundler are installed, 
-following the 'Requirements' section of GitHub's documentation.
-Clone the repository and switch to the docs/ directory
+## Make sure that ruby and bundler are installed, 
+## following the 'Requirements' section of GitHub's documentation.
+## Clone the repository and switch to the docs/ directory
+
 ```
 git clone http://github.com/developer/repository.git
 cd repository/docs
 # cd BioC2019/docs
+
 ```
-Install or update bundler to install the ruby pre-requisities.
+# Install or update bundler to install the ruby pre-requisities.
+
 ```
 gem install --user-install bundler
 # If the installer complains, add the suggested $PATH_TO_RUBY/bin directory to your ~/.bash_profile or ~/.bashrc
@@ -228,4 +280,5 @@ bundle install --path vendor/bundle     # once only; references Gemfile
 bundle exec jekyll serve
 # and view the results at https://localhost:4000
 firefox https://localhost:4000
+
 ```
