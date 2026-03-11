@@ -1,4 +1,5 @@
 # System (Re)Configuration Documentation
+
 -------------------------------------------------------------------------------------------------------------------------------
 Here is some code to help reinstall everything after nuking an OS, which I have done frequently enough to warrant automation of the task. These files and commands configure bash, emacs, R, conda, java, docker, ssh, jupyter-notebook, and git.
 -------------------------------------------------------------------------------------------------------------------------------
@@ -8,48 +9,56 @@ Here is some code to help reinstall everything after nuking an OS, which I have 
   ###  Disable third-party repositories (PPAs), as they can cause conflicts during the upgrade.
   ###  Ensure update-manager-core is installed by running sudo apt install update-manager-core. 
   ###  Update the current system' packages to ensure everything is current before the version upgrade.
+
 ```
 bash
-```
-```
-    sudo apt update && sudo apt upgrade -y
-    sudo apt dist-upgrade -y
-        # Handles changing dependencies
-    sudo apt autoremove -y
-        # Removes obsolete packages
-```
-    If a new kernel was installed, you might be prompted to reboot the system. If the file /run/reboot-required exists, you must reboot     with sudo reboot before continuing.
-    Start the release upgrade process by running the following command in the terminal:
+# Handles changing dependencies
+sudo apt update && sudo apt upgrade -y
+sudo apt dist-upgrade -y
 
-```    
-    bash
-    sudo do-release-upgrade
-```
-    If you are running a Long Term Support (LTS) release and the next LTS version's first point release is not yet available, you might     receive a message that "No new release found". To force the upgrade to the development release (which is the stable version once        released), you can use the -d flag:
+# Removes obsolete packages
+sudo apt autoremove -y
 
 ```
-    bash
-    sudo do-release-upgrade -d
+
+# If a new kernel was installed, you might be prompted to reboot the system. If the file /run/reboot-required exists, you must reboot   # with sudo reboot before continuing.
+# Start the release upgrade process by running the following command in the terminal:
+
 ```
+bash
+sudo do-release-upgrade
+```
+
+# If you are running a Long Term Support (LTS) release and the next LTS version's first point release is not yet available, you might   # receive a message that "No new release found". To force the upgrade to the development release (which is the stable version once     # released), you can use the -d flag:
+
+```
+bash
+sudo do-release-upgrade -d
+```
+
 # R-version 3.4
 ## libraries for linux are distro and version specific
 ## In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
 
-```
 # ubuntu 18.04
+```
 deb http://ppa.launchpad.net/marutter/c2d4u/ubuntu bionic main 
 deb-src http://ppa.launchpad.net/marutter/c2d4u/ubuntu bionic main
-
+```
 # debian
-# Appends the CRAN repository to your sources.list file 
+## Appends the CRAN repository to your sources.list file 
+
+```
 deb http://<favourite-cran-mirror>/bin/linux/debian stretch-cran35/
+```
 # Adds the CRAN GPG key, which is used to sign the R packages for security.
+
+```
 sudo apt-key adv --keyserver subkeys.pgp.net --recv-key 381BA480
 sudo apt-get update
 sudo apt-get install r-base r-base-dev
 ```
-
-Afterwards, execute the following command:
+# Afterwards, execute the following command:
 
 ```
 sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
@@ -58,8 +67,9 @@ sudo add-apt-repository ppa:marutter/c2d4u && sudo apt-get update
 # and add the  following lines to /etc/apt/sources.list as sudo user:
 ```
 
+-------------------------------------------------------------------------------------------------------------------------------
 # R-version 3.5
-In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
+## In order to install R-version 3.4.* add the following lines to /etc/apt/sources.list:
 
 ```
 deb http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main 
@@ -67,7 +77,7 @@ deb-src http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main
 deb http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main 
 deb-src http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main 
 ```
-Afterwards, execute the following command:
+# Afterwards, execute the following command:
 
 ```
 sudo add-apt-repository ppa:marutter/c2d4u3.5 && sudo apt update
@@ -132,8 +142,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 ## Make sure to remove previous and possibly broken docker versions before installing current version
 ## add the repository for ubuntu 18.04 with 
 
-```
-bash
+``
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -158,9 +167,11 @@ sudo docker exec -it <CONTAINER ID/NAME> bash
 # find a container
 docker search *
 ```
+-------------------------------------------------------------------------------------------------------------------------------
 
 # Running the rocker container in the browser 
-username: rstudio password: rstudio
+## username: rstudio
+## password: rstudio
 
 ```
 docker run --rm -p 8787:8787 rocker/verse
@@ -227,8 +238,9 @@ git pull origin master
 # Push everything to A
 git merge master-holder --allow-unrelated-histories
 git push origin master
-
 ```
+-------------------------------------------------------------------------------------------------------------------------------
+
 ## Modifying default method for communicating with remote repositories
 ## Modify from https to ssh
 
@@ -255,7 +267,6 @@ conda config --add channels conda-forge
 # create env from yaml file
 conda env create -f env.yml
 conda env create --name EnvName --file env.yml
-
 ```
 -------------------------------------------------------------------------------------------------------------------------------
 # Initializing Jekyll to View a Website or Blog
