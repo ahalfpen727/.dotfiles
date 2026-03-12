@@ -5,7 +5,7 @@ Here is some code to help reinstall everything after nuking an OS, which I have 
 -------------------------------------------------------------------------------------------------------------------------------
 
 # Ubuntu Release System Update Documentation
-  ## Step-by-Step Instructions
+  ##   Step-by-Step Instructions
   ###  Disable third-party repositories (PPAs), as they can cause conflicts during the upgrade.
   ###  Ensure update-manager-core is installed by running sudo apt install update-manager-core. 
   ###  Update the current system' packages to ensure everything is current before the version upgrade.
