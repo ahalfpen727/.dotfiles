@@ -1,18 +1,10 @@
 # System (Re)Configuration Documentation
-
+# Ubuntu Release System Update Step-by-Step Instructions
 -------------------------------------------------------------------------------------------------------------------------------
  Here is some code to help reinstall everything after nuking an OS, which I have done frequently enough to warrant automation of the task. 
  These files and commands configure bash, emacs, R, conda, java, docker, ssh, jupyter-notebook, and git.
 -------------------------------------------------------------------------------------------------------------------------------
 
-# Ubuntu Release System Update Step-by-Step Instructions
--------------------------------------------------------------------------------------------------------------------------------
- Disable third-party repositories (PPAs), as they can cause conflicts during the upgrade.
- Ensure update-manager-core is installed by running sudo apt install update-manager-core. 
- Update the current system' packages to ensure everything is current before the version upgrade.
--------------------------------------------------------------------------------------------------------------------------------
-
-# Handles changing dependencies
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt dist-upgrade -y
@@ -20,6 +12,7 @@ sudo apt dist-upgrade -y
 # Removes obsolete packages
 ```
 sudo apt autoremove -y
+sudo apt autoclean -y
 ```
 
 -------------------------------------------------------------------------------------------------------------------------------
